@@ -1,0 +1,43 @@
+﻿@model DrinksDispenser.Models.DrinksDispenserViewModel
+@{
+    ViewBag.Title = "Distributeur de boissons";
+}
+
+<h1>Choisir une boisson : </h1>
+<div>
+    @if (Model.Drinks != null && Model.Drinks.Count > 0)
+    {
+
+
+
+
+        foreach (var item in Model.Drinks)
+        {
+
+            <div class="form-group">
+                <input type="submit" value="@item.Name" onclick="UpdatePrice('@item.Price');" />
+            </div>
+
+            <br />
+        }
+
+
+
+        <br />
+        <div id="priceContent" style="font-size:medium">
+            <label>Prix : </label>
+            <span id="price">0.00 €</span>
+        </div>
+
+    }
+    else
+    {<div class="alert-info"> @Model.Message</div>}
+
+
+</div>
+
+<script type="text/javascript">
+    function UpdatePrice(price) {
+        $('#price')[0].innerText = price+" €" ;
+    }
+</script>
